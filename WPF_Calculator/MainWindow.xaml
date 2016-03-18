@@ -25,7 +25,7 @@
         <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" Height="79" Margin="268,179,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="LeftBrace" Content="(" HorizontalAlignment="Left" Height="79" Margin="10,95,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="RightBrace" Content=")" HorizontalAlignment="Left" Height="79" Margin="96,95,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="Percentage" Content="%" HorizontalAlignment="Left" Height="79" Margin="182,95,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
+        <Button x:Name="Power" Content="^" HorizontalAlignment="Left" Height="79" Margin="182,95,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="AllClear" Content="AC" HorizontalAlignment="Left" Height="79" Margin="268,95,0,0" VerticalAlignment="Top" Width="81" Click="Calculator_Function_Button_Click"/>
         <TextBlock x:Name="Display" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="339" FontSize="64" TextAlignment="Right"/>
 

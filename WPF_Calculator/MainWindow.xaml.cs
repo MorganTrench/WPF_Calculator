@@ -25,11 +25,8 @@ namespace WPF_Calculator
     {
         // Value displayed on right of calculator display, used to display the most recent value/operator entered and oputput of the calculation.
         String inVal = "0";
-        // To be display above and to the left of the input values/result
-        String expressionString = "";
 
-        // TODO
-        // CalculatorTree expression = new CalculatorTree();
+        Expression expression = null;
 
         public MainWindow()
         {
@@ -80,12 +77,14 @@ namespace WPF_Calculator
 
         private void Operator_Button_Click(object sender, RoutedEventArgs e)
         {
+            float convertedVal = float.Parse(inVal);
             Button temp = (Button)sender;
             switch (temp.Name)
             {
-                case "AllClear":
-                    inVal = "0";
-                    Display.Text = inVal;
+                case "Add":
+                    if (expression == null)
+                        expression = new Add(new Constant(convertedVal), null);
+                     
                     break;
                 default:
                     Debug.WriteLine("Non Operator Case reached in Operator_Click");
