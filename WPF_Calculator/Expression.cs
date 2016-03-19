@@ -140,4 +140,30 @@ namespace WPF_Calculator
         }
     }
 
+    public class Pow : Expression
+    {
+        // Constructor
+        public Pow(Expression l, Expression r) : base(l, r) { }
+
+        public override float evaluate()
+        {
+            float result = (float) Math.Pow(left.evaluate(), right.evaluate());
+            return result;
+        }
+
+        public override string toString()
+        {
+            String temp = "";
+            if (left != null)
+                temp += "(" + left.toString();
+
+            if ((left != null) && (right != null))
+                temp += " ^ ";
+
+            if (right != null)
+                temp += right.toString() + ")";
+            return temp;
+        }
+    }
+
 }

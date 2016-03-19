@@ -23,30 +23,22 @@ namespace WPF_Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Value displayed on right of calculator display, used to display the most recent value/operator entered and oputput of the calculation.
-        String inVal = "0";
-
-        Expression expression = null;
+        // Value displayed on right of calculator display, used to display the most recent value/operator entered and output of the calculation.
+        String primaryDisplay = "0";
+        String secondaryDisplay = "";
+        BinaryExpressionTree expTree = null;
+        bool justEvaluated = false;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void digit(String input)
+        private void reset()
         {
-            if (inVal == "0")
-            {
-                inVal = "";
-            }
-            inVal += input;
-            Display.Text = inVal;
-        }
-
-        private void reset(int input)
-        {
-            inVal = "0";
-            Display.Text = inVal;
+            primaryDisplay = "0";
+            secondaryDisplay = "";
+            updateGUI();
         }
 
         private void Numerical_Button_Click(object sender, RoutedEventArgs e)
@@ -54,7 +46,12 @@ namespace WPF_Calculator
             String temp = ((Button)sender).Name;
             Debug.WriteLine(temp + " Clicked");
             temp = temp.Substring(temp.Length-1);
-            digit(temp);
+            if (primaryDisplay == "0")
+            {
+                primaryDisplay = "";
+            }
+            primaryDisplay += temp;
+            updateGUI();
         }
 
         private void Calculator_Function_Button_Click(object sender, RoutedEventArgs e) {
@@ -62,34 +59,70 @@ namespace WPF_Calculator
             switch (temp.Name)
             {
                 case "AllClear":
-                    inVal = "0";
-                    Display.Text = inVal;
+                    reset();
                     break;
                 case "Point":
-                    inVal += ".";
-                    Display.Text = inVal;
+                    primaryDisplay += ".";
+                    break;
+                case "Equals":
+                    secondaryDisplay += primaryDisplay;
+                    expTree = new BinaryExpressionTree(secondaryDisplay.Trim());
+                    primaryDisplay = expTree.evaluateTree() + "";
+                    justEvaluated = true;
+                    break;
+                case "LeftBrace":
+                    if (primaryDisplay == "0")
+                    {
+                        primaryDisplay = "";
+                    }
+                    primaryDisplay += " ( ";
+                    break;
+                case "RightBrace":
+                    primaryDisplay += " ) ";
                     break;
                 default:
                     Debug.WriteLine("Non Calculator Function Case reached in Calculator_Function_Click");
                     break;
             }
+            updateGUI();
         }
 
         private void Operator_Button_Click(object sender, RoutedEventArgs e)
         {
-            float convertedVal = float.Parse(inVal);
+            if (justEvaluated)
+            {
+                justEvaluated = false;
+                secondaryDisplay = "";
+            }
             Button temp = (Button)sender;
             switch (temp.Name)
             {
                 case "Add":
-                    if (expression == null)
-                        expression = new Add(new Constant(convertedVal), null);
-                     
+                    secondaryDisplay +=  primaryDisplay + " + ";
+                    break;
+                case "Subtract":
+                    secondaryDisplay += primaryDisplay + " - ";
+                    break;
+                case "Multiply":
+                    secondaryDisplay += primaryDisplay + " * ";
+                    break;
+                case "Divide":
+                    secondaryDisplay += primaryDisplay + " / ";
+                    break;
+                case "Power":
+                    secondaryDisplay += primaryDisplay + " ^ ";
                     break;
                 default:
-                    Debug.WriteLine("Non Operator Case reached in Operator_Click");
-                    break;
+                    throw new Exception("Non Operator Case reached in Operator_Click." + "Operator: " + temp.Name);
             }
+            primaryDisplay = "";
+            updateGUI();
+        }
+
+        private void updateGUI()
+        {
+            SecondaryDisplay.Text = secondaryDisplay;
+            Display.Text = primaryDisplay;
         }
 
     }

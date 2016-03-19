@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="Button0" Content="0" HorizontalAlignment="Left" Height="79" Margin="10,431,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="Point" Content="." HorizontalAlignment="Left" Height="79" Margin="96,431,0,0" VerticalAlignment="Top" Width="81" Click="Calculator_Function_Button_Click"/>
-        <Button x:Name="Equals" Content="=" HorizontalAlignment="Left" Height="79" Margin="182,431,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
+        <Button x:Name="Equals" Content="=" HorizontalAlignment="Left" Height="79" Margin="182,431,0,0" VerticalAlignment="Top" Width="81" Click="Calculator_Function_Button_Click"/>
         <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" Height="79" Margin="10,347,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="Button2" Content="2" HorizontalAlignment="Left" Height="79" Margin="96,347,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="Button3" Content="3" HorizontalAlignment="Left" Height="79" Margin="182,347,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
@@ -19,15 +19,16 @@
         <Button x:Name="Button7" Content="7" HorizontalAlignment="Left" Height="79" Margin="10,179,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" Height="79" Margin="96,179,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" Height="79" Margin="182,179,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="Add" Content="+" HorizontalAlignment="Left" Height="79" Margin="268,431,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="Subtract" Content="-" HorizontalAlignment="Left" Height="79" Margin="268,347,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="Multiply" Content="x" HorizontalAlignment="Left" Height="79" Margin="268,263,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" Height="79" Margin="268,179,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="LeftBrace" Content="(" HorizontalAlignment="Left" Height="79" Margin="10,95,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="RightBrace" Content=")" HorizontalAlignment="Left" Height="79" Margin="96,95,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
-        <Button x:Name="Power" Content="^" HorizontalAlignment="Left" Height="79" Margin="182,95,0,0" VerticalAlignment="Top" Width="81" Click="Numerical_Button_Click"/>
+        <Button x:Name="Add" Content="+" HorizontalAlignment="Left" Height="79" Margin="268,431,0,0" VerticalAlignment="Top" Width="81" Click="Operator_Button_Click"/>
+        <Button x:Name="Subtract" Content="-" HorizontalAlignment="Left" Height="79" Margin="268,347,0,0" VerticalAlignment="Top" Width="81" Click="Operator_Button_Click"/>
+        <Button x:Name="Multiply" Content="x" HorizontalAlignment="Left" Height="79" Margin="268,263,0,0" VerticalAlignment="Top" Width="81" Click="Operator_Button_Click"/>
+        <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" Height="79" Margin="268,179,0,0" VerticalAlignment="Top" Width="81" Click="Operator_Button_Click"/>
+        <Button x:Name="LeftBrace" Content="(" HorizontalAlignment="Left" Height="79" Margin="10,95,0,0" VerticalAlignment="Top" Width="81" Click="Calculator_Function_Button_Click"/>
+        <Button x:Name="RightBrace" Content=")" HorizontalAlignment="Left" Height="79" Margin="96,95,0,0" VerticalAlignment="Top" Width="81" Click="Calculator_Function_Button_Click"/>
+        <Button x:Name="Power" Content="^" HorizontalAlignment="Left" Height="79" Margin="182,95,0,0" VerticalAlignment="Top" Width="81" Click="Operator_Button_Click"/>
         <Button x:Name="AllClear" Content="AC" HorizontalAlignment="Left" Height="79" Margin="268,95,0,0" VerticalAlignment="Top" Width="81" Click="Calculator_Function_Button_Click"/>
-        <TextBlock x:Name="Display" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="339" FontSize="64" TextAlignment="Right"/>
+        <TextBlock x:Name="Display" HorizontalAlignment="Left" Height="55" Margin="10,35,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="339" FontSize="48" TextAlignment="Right"/>
+        <TextBlock x:Name="SecondaryDisplay" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="339" FontSize="21.333"/>
 
     </Grid>
 </Window>

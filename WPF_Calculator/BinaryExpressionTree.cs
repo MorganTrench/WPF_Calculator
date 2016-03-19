@@ -33,6 +33,12 @@ namespace WPF_Calculator
             rootExpression = generateTree(inFixToPostFix(raw));
         }
 
+        // return the evaluated tree
+        public float evaluateTree()
+        {
+            return rootExpression.evaluate();
+        }
+
         // Converts Infix expressions to Postfix Expressions
         private String inFixToPostFix(String input)
         {
@@ -102,8 +108,8 @@ namespace WPF_Calculator
             return output.Trim();
         }
 
-        // Returns an BET that reflects the PostFix expression argument
-        public Expression generateTree(string postFixed)
+        // Returns a BET that reflects the PostFix expression argument
+        private Expression generateTree(string postFixed)
         {
             // https://www.wikiwand.com/en/Binary_expression_tree#/Construction_of_an_expression_tree
             String[] tokens = postFixed.Split(' ');
@@ -111,6 +117,9 @@ namespace WPF_Calculator
             for(int i = 0; i < tokens.Length; i++)
             {
                 String token = tokens[i];
+                if (token == "")
+                    continue;
+
                 if (!isOperator(token))
                 {
                     construct.Push(new Constant(float.Parse(token)));
@@ -148,6 +157,8 @@ namespace WPF_Calculator
                     return new Multi(left, right);
                 case "/":
                     return new Div(left, right);
+                case "^":
+                    return new Pow(left, right);
                 default:
                     throw new Exception("Unmatched Operator Token");
             }
